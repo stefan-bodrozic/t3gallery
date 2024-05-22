@@ -7,6 +7,7 @@ import "@uploadthing/react/styles.css";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
+import React from "react";
 
 export const metadata = {
   title: "T3 Gallery App",
@@ -17,8 +18,10 @@ export const metadata = {
 
 export default function RootLayout({
   children,
+  modal
 }: {
   children: React.ReactNode;
+  modal: React.ReactNode;
 }) {
   return (
     <ClerkProvider> 
@@ -27,6 +30,8 @@ export default function RootLayout({
           <body>
             <TopNav />
             {children}
+            {modal}
+            <div id="modal-root"/>
           </body>
       </html>
     </ClerkProvider>
